@@ -1,4 +1,6 @@
 # PB1
+Avtorja: Denis Benčič in Hana Kranjec Kelbel
+
 V bazi bi zbrala osnovne podatke o slovenskih fakultetah.
 
 Bazo bi sestavljale tabele univerza, fakulteta, program in predmet, ki bi bile med seboj povezane.
