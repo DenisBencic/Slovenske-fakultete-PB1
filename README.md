@@ -1,4 +1,4 @@
-# PB1
+# Slovenske fakultete
 Avtorja: Denis Benčič in Hana Kranjec Kelbel
 
 V bazi bi zbrala osnovne podatke o slovenskih fakultetah.
