@@ -15,4 +15,4 @@ Glavni namen in funkcionalnost baze bi bil hiter dostop in poizvedovanje do vseh
 
 Trenutno gre zgolj za osnovno idejo, ki se bo morda spremenila tekom ustvarjanja.
 
-![](ER/univerze_popravljeno1.png)
+![](ER/diagram.png)
