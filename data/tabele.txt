@@ -3,19 +3,19 @@ CREATE TABLE univerza (
 	naziv TEXT NOT NULL UNIQUE,
 	tip TEXT CHECK (tip IN ('javna', 'zasebna')),
 	rektor TEXT,
-	lokacija TEXT NOT NULL,
+	lokacija TEXT,
 	kontakt TEXT,
-	e_naslov TEXT NOT NULL,
-	spletna_stran TEXT NOT NULL,
+	e_naslov TEXT,
+	spletna_stran TEXT,
 	leto_ustanovitve INTEGER
 );
  
 CREATE TABLE fakulteta (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	naziv TEXT NOT NULL UNIQUE,
-	dekan TEXT NOT NULL,
+	naziv TEXT NOT NULL,
+	dekan TEXT,
 	lokacija TEXT NOT NULL,
-	kontakt INTEGER NOT NULL,
+	kontakt INTEGER,
 	e_naslov TEXT NOT NULL,
 	spletna_stran TEXT NOT NULL,
 	leto_ustanovitve INTEGER,
@@ -25,7 +25,8 @@ CREATE TABLE fakulteta (
 CREATE TABLE program (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	naziv TEXT NOT NULL,
-	tip TEXT NOT NULL CHECK (tip IN ('redni', 'izredni')),
+	redni TEXT NOT NULL CHECK (redni IN ('da', 'ne')),
+	izredni TEXT NOT NULL CHECK (izredni IN ('da', 'ne')),
 	stopnja TEXT NOT NULL CHECK (stopnja IN ('B1-VSŠ', 'B1-UNI', 'B1-MAG', 'B2-MAG', 'B3-DR')),
 	trajanje INTEGER NOT NULL,
 	fakulteta INTEGER REFERENCES fakulteta(id)
