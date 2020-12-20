@@ -25,8 +25,8 @@ CREATE TABLE fakulteta (
 CREATE TABLE program (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	naziv TEXT NOT NULL,
-	redni TEXT NOT NULL CHECK (redni IN ('da', 'ne')),
-	izredni TEXT NOT NULL CHECK (izredni IN ('da', 'ne')),
+	redni BOOL NOT NULL,
+	izredni BOOL NOT NULL,
 	stopnja TEXT NOT NULL CHECK (stopnja IN ('B1-VSŠ', 'B1-UNI', 'B1-MAG', 'B2-MAG', 'B3-DR')),
 	trajanje INTEGER NOT NULL,
 	fakulteta INTEGER REFERENCES fakulteta(id)
