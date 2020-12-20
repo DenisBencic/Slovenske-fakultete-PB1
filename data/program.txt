@@ -1,0 +1,1 @@
+INSERT INTO program (id, naziv, redni, izredni, stopnja, trajanje, fakulteta) VALUES (1, 'Ples, koreografija - balet', FALSE, TRUE, 'B1-VSŠ', 3, 1);
