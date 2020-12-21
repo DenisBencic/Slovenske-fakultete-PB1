@@ -28,36 +28,5 @@ CREATE TABLE program (
 	redni BOOL NOT NULL,
 	izredni BOOL NOT NULL,
 	stopnja TEXT NOT NULL CHECK (stopnja IN ('B1-VSŠ', 'B1-UNI', 'B1-MAG', 'B2-MAG', 'B3-DR')),
-	trajanje INTEGER NOT NULL,
 	fakulteta INTEGER REFERENCES fakulteta(id)
-);
-
-CREATE TABLE predmet (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	ime TEXT NOT NULL,
-	st_tedenskih_ur INTEGER NOT NULL,
-	ECTS INTEGER NOT NULL,
-	program INTEGER REFERENCES program(id),
-	ucitelj INTEGER REFERENCES ucitelj(id),
-	prostor INTEGER REFERENCES prostor(id)
-);
-
-CREATE TABLE izpit (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	datum DATE NOT NULL,
-	predmet INTEGER REFERENCES predmet(id)
-);
-
-CREATE TABLE prostor (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	naziv TEXT NOT NULL,
-	fakulteta INTEGER REFERENCES fakulteta(id)
-);
-
-CREATE TABLE ucitelj (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	ime_in_priimek TEXT NOT NULL,
-	e_naslov TEXT,
-	kabinet INTEGER REFERENCES prostor(id),
-	fakulteta INTEGER REFERENCES fakulteta(id) 
 );
