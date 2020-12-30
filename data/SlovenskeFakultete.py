@@ -1,4 +1,5 @@
 import sqlite3 as dbapi
+from bottle import route, run, template
 
 # Ustvari povezavo in kurzor
 povezava = dbapi.connect('SlovenskeFakultete.sqlite')
@@ -39,13 +40,47 @@ st_fakultet = kurzor.fetchone()[0]
 kurzor.execute('SELECT COUNT(*) FROM program')
 st_programov = kurzor.fetchone()[0]
 
-# Pozdrav uporabnika
-print('Pozdravljeni v bazi slovenskih univerz, fakultet in programov.')
-print('V bazi je trenutno {} univerz, {} fakultete in {} programov.'.format(st_univerz - 1, st_fakultet, st_programov))
+@route('/')
+def pozdrav():
+    return '''
+        <!DOCTYPE html>
+        <head>
+            <title> Slovenske fakultete </title>
+        </head>
+        <body>
+        <p><b>Pozdravljeni v bazi slovenskih univerz, fakultet in programov.
+        <br>V bazi je trenutno {} univerz, {} fakultete in {} programov.
+        </b>
+        <br>
+        <br> Kaj želite iskati?
+            <ol>
+                <li> <a href = '../univerze/'> Univerze </a> </li>
+                <li> <a href = '../fakultete/'> Fakultete </a> </li>
+                <li> <a href = '../programi/'> Programi </a> </li>
+            <ol>
+        </p>
+        </body>
+        </html>
+    '''.format(st_univerz - 1, st_fakultet, st_programov)
+
+@route('/fakultete/')
+def fakultete():
+    html = f"<a href = '../'> Nazaj </a>"
+    return html
+
+@route('/univerze/')
+def univerze():
+    html = f"<a href = '../'> Nazaj </a>"
+    return html
+
+@route('/programi/')
+def programi():
+    html = f"<a href = '../'> Nazaj </a>"
+    return html
+
+run(debug = True)
 
 # Prekinitev povezave z SQL
 povezava.commit
 kurzor.close
 povezava.close
-
-
