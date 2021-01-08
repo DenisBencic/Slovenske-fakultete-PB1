@@ -1,4 +1,5 @@
 import sqlite3 as dbapi
+povezava = dbapi.connect('SlovenskeFakultete.sqlite')
 
 # Univerze
 
@@ -8,13 +9,10 @@ def isci_univerza_naziv(naziv):
     in njene podatke
     glede na podan naziv.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE naziv LIKE '%{}%'".format(naziv))
+    kurzor.execute("SELECT * FROM univerza WHERE naziv LIKE ?", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_univerza_tip(tip):
@@ -23,13 +21,10 @@ def isci_univerza_tip(tip):
     in njene podatke
     glede na podan tip.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE tip LIKE '%{}%'".format(tip))
+    kurzor.execute("SELECT * FROM univerza WHERE tip LIKE ?", ['%' + tip + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_univerza_rektor(rektor):
@@ -38,13 +33,10 @@ def isci_univerza_rektor(rektor):
     in njene podatke
     glede na podanega rektorja.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE rektor LIKE '%{}%'".format(rektor))
+    kurzor.execute("SELECT * FROM univerza WHERE rektor LIKE ?", ['%' + rektor + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_univerza_lokacija(lokacija):
@@ -53,13 +45,10 @@ def isci_univerza_lokacija(lokacija):
     in njene podatke
     glede na podano lokacijo.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE lokacija LIKE '%{}%'".format(lokacija))
+    kurzor.execute("SELECT * FROM univerza WHERE lokacija LIKE ?", ['%' + lokacija + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_univerza_e_naslov(e_naslov):
@@ -68,13 +57,10 @@ def isci_univerza_e_naslov(e_naslov):
     in njene podatke
     glede na podan e-naslov.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE e_naslov LIKE '%{}%'".format(e_naslov))
+    kurzor.execute("SELECT * FROM univerza WHERE e_naslov LIKE ?", ['%' + e_naslov + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_univerza_spletna_stran(spletna_stran):
@@ -83,13 +69,10 @@ def isci_univerza_spletna_stran(spletna_stran):
     in njene podatke
     glede na podano spletno stran.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE spletna_stran LIKE '%{}%'".format(spletna_stran))
+    kurzor.execute("SELECT * FROM univerza WHERE spletna_stran LIKE ?", ['%' + spletna_stran + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_univerza_leto_ustanovitve(leto_ustanovitve):
@@ -98,13 +81,10 @@ def isci_univerza_leto_ustanovitve(leto_ustanovitve):
     in njene podatke
     glede na podano leto ustanovtive.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE leto_ustanovitve LIKE {}".format(leto_ustanovitve))
+    kurzor.execute("SELECT * FROM univerza WHERE leto_ustanovitve = ?", [leto_ustanovitve])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 # Fakultete
@@ -115,13 +95,10 @@ def isci_fakulteta_naziv(naziv):
     in njene podatke
     glede na podan naziv.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.naziv LIKE '%{}%'".format(naziv))
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.naziv LIKE ?", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_fakulteta_dekan(dekan):
@@ -130,13 +107,10 @@ def isci_fakulteta_dekan(dekan):
     in njene podatke
     glede na podanega dekana.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.dekan LIKE '%{}%'".format(dekan))
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.dekan LIKE ?", ['%' + dekan + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_fakulteta_lokacija(lokacija):
@@ -145,13 +119,9 @@ def isci_fakulteta_lokacija(lokacija):
     in njene podatke
     glede na podano lokacijo.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
-    kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.lokacija LIKE '%{}%'".format(lokacija))
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.lokacija LIKE ?", ['%' + lokacija + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_fakulteta_kontakt(kontakt):
@@ -160,13 +130,10 @@ def isci_fakulteta_kontakt(kontakt):
     in njene podatke
     glede na podan kontakt.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.kontakt LIKE '%{}%'".format(kontakt))
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.kontakt LIKE ?", ['%' + kontakt + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_fakulteta_e_naslov(e_naslov):
@@ -175,13 +142,10 @@ def isci_fakulteta_e_naslov(e_naslov):
     in njene podatke
     glede na podan e-naslov.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.e_naslov LIKE '%{}%'".format(e_naslov))
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.e_naslov LIKE ?", ['%' + e_naslov + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_fakulteta_spletna_stran(spletna_stran):
@@ -190,13 +154,10 @@ def isci_fakulteta_spletna_stran(spletna_stran):
     in njene podatke
     glede na podano spletno stran.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.spletna_stran LIKE '%{}%'".format(spletna_stran))
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.spletna_stran LIKE ?", ['%' + spletna_stran + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_fakulteta_leto_ustanovitve(leto_ustanovitve):
@@ -205,13 +166,10 @@ def isci_fakulteta_leto_ustanovitve(leto_ustanovitve):
     in njene podatke
     glede na podano spletno stran.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE leto_ustanovitve LIKE {}'".format(leto_ustanovitve))
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE leto_ustanovitve LIKE ?", [leto_ustanovitve])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_fakulteta_univerza(naziv):
@@ -220,13 +178,10 @@ def isci_fakulteta_univerza(naziv):
     in njene podatke
     glede na podano spletno stran.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE univerza.naziv LIKE '%{}%'".format(naziv))
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE univerza.naziv LIKE ?", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 # Programi
@@ -237,13 +192,10 @@ def isci_program_naziv(naziv):
     in njegove podatke
     glede na podan naziv.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.naziv LIKE '%{}%'".format(naziv))
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.naziv LIKE ?", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_program_redni(redni):
@@ -253,13 +205,10 @@ def isci_program_redni(redni):
     glede, ali gre za redni
     program ali ne.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.redni LIKE 1".format(redni))
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.redni LIKE ?", [redni])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_program_izredni(izredni):
@@ -269,13 +218,10 @@ def isci_program_izredni(izredni):
     glede na to, ali gre za redni
     program ali ne.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.izredni LIKE 1".format(izredni))
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.izredni LIKE ?", [izredni])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_program_stopnja(stopnja):
@@ -284,13 +230,10 @@ def isci_program_stopnja(stopnja):
     in njegove podatke
     glede na podano stopnjo.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.stopnja LIKE '%{}%'".format(izredni))
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.stopnja LIKE ?", ['%' + stopnja + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
 
 def isci_program_fakulteta(naziv):
@@ -299,12 +242,8 @@ def isci_program_fakulteta(naziv):
     in njegove podatke
     glede na podano stopnjo.
     '''
-    povezava = dbapi.connect('SlovenskeFakultete.sqlite')
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.naziv LIKE '%{}%'".format(naziv))
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.naziv LIKE ?", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
-    povezava.commit()
     kurzor.close()
-    povezava.close()
     return vrni
-    
