@@ -1,8 +1,6 @@
 import sqlite3 as dbapi
 povezava = dbapi.connect('SlovenskeFakultete.sqlite')
 
-# Univerze
-
 def isci_univerza_naziv(naziv):
     '''
     V bazi poišče univerzo
@@ -10,7 +8,7 @@ def isci_univerza_naziv(naziv):
     glede na podan naziv.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE naziv LIKE ?", ['%' + naziv + '%'])
+    kurzor.execute("SELECT * FROM univerza WHERE naziv LIKE ? ORDER BY naziv ASC", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -22,7 +20,7 @@ def isci_univerza_tip(tip):
     glede na podan tip.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE tip LIKE ?", ['%' + tip + '%'])
+    kurzor.execute("SELECT * FROM univerza WHERE tip LIKE ? ORDER BY naziv ASC", ['%' + tip + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -34,7 +32,7 @@ def isci_univerza_rektor(rektor):
     glede na podanega rektorja.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE rektor LIKE ?", ['%' + rektor + '%'])
+    kurzor.execute("SELECT * FROM univerza WHERE rektor LIKE ? ORDER BY naziv ASC", ['%' + rektor + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -46,7 +44,19 @@ def isci_univerza_lokacija(lokacija):
     glede na podano lokacijo.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE lokacija LIKE ?", ['%' + lokacija + '%'])
+    kurzor.execute("SELECT * FROM univerza WHERE lokacija LIKE ? ORDER BY naziv ASC", ['%' + lokacija + '%'])
+    vrni = kurzor.fetchall()
+    kurzor.close()
+    return vrni
+
+def isci_univerza_kontakt(kontakt):
+    '''
+    V bazi poišče univerzo
+    in njene podatke
+    glede na podan kontakt.
+    '''
+    kurzor = povezava.cursor()
+    kurzor.execute("SELECT * FROM univerza WHERE kontakt LIKE ? ORDER BY naziv ASC", ['%' + kontakt + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -58,7 +68,7 @@ def isci_univerza_e_naslov(e_naslov):
     glede na podan e-naslov.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE e_naslov LIKE ?", ['%' + e_naslov + '%'])
+    kurzor.execute("SELECT * FROM univerza WHERE e_naslov LIKE ? ORDER BY naziv ASC", ['%' + e_naslov + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -70,8 +80,8 @@ def isci_univerza_spletna_stran(spletna_stran):
     glede na podano spletno stran.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE spletna_stran LIKE ?", ['%' + spletna_stran + '%'])
-    vrni = kurzor.fetchall()
+    kurzor.execute("SELECT * FROM univerza WHERE spletna_stran LIKE ? ORDER BY naziv ASC", ['%' + spletna_stran + '%'])
+    vrni = none_v_prazen_niz(kurzor.fetchall())
     kurzor.close()
     return vrni
 
@@ -82,7 +92,7 @@ def isci_univerza_leto_ustanovitve(leto_ustanovitve):
     glede na podano leto ustanovtive.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM univerza WHERE leto_ustanovitve = ?", [leto_ustanovitve])
+    kurzor.execute("SELECT * FROM univerza WHERE leto_ustanovitve = ? ORDER BY naziv ASC", [leto_ustanovitve])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -96,7 +106,7 @@ def isci_fakulteta_naziv(naziv):
     glede na podan naziv.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.naziv LIKE ?", ['%' + naziv + '%'])
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.naziv LIKE ? ORDER BY naziv ASC", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -108,7 +118,7 @@ def isci_fakulteta_dekan(dekan):
     glede na podanega dekana.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.dekan LIKE ?", ['%' + dekan + '%'])
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.dekan LIKE ? ORDER BY naziv ASC", ['%' + dekan + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -119,7 +129,8 @@ def isci_fakulteta_lokacija(lokacija):
     in njene podatke
     glede na podano lokacijo.
     '''
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.lokacija LIKE ?", ['%' + lokacija + '%'])
+    kurzor = povezava.cursor()
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.lokacija LIKE ? ORDER BY naziv ASC", ['%' + lokacija + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -131,7 +142,7 @@ def isci_fakulteta_kontakt(kontakt):
     glede na podan kontakt.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.kontakt LIKE ?", ['%' + kontakt + '%'])
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.kontakt LIKE ? ORDER BY naziv ASC", ['%' + kontakt + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -143,7 +154,7 @@ def isci_fakulteta_e_naslov(e_naslov):
     glede na podan e-naslov.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.e_naslov LIKE ?", ['%' + e_naslov + '%'])
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.e_naslov LIKE ? ORDER BY naziv ASC", ['%' + e_naslov + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -155,8 +166,8 @@ def isci_fakulteta_spletna_stran(spletna_stran):
     glede na podano spletno stran.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.spletna_stran LIKE ?", ['%' + spletna_stran + '%'])
-    vrni = kurzor.fetchall()
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.spletna_stran LIKE ? ORDER BY naziv ASC", ['%' + spletna_stran + '%'])
+    vrni = none_v_prazen_niz(kurzor.fetchall())
     kurzor.close()
     return vrni
 
@@ -167,7 +178,7 @@ def isci_fakulteta_leto_ustanovitve(leto_ustanovitve):
     glede na podano spletno stran.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE leto_ustanovitve LIKE ?", [leto_ustanovitve])
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE leto_ustanovitve LIKE ? ORDER BY naziv ASC", [leto_ustanovitve])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -179,7 +190,7 @@ def isci_fakulteta_univerza(naziv):
     glede na podano spletno stran.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE univerza.naziv LIKE ?", ['%' + naziv + '%'])
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE univerza.naziv LIKE ? ORDER BY naziv ASC", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -193,7 +204,7 @@ def isci_program_naziv(naziv):
     glede na podan naziv.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.naziv LIKE ?", ['%' + naziv + '%'])
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.naziv LIKE ? ORDER BY naziv ASC", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -206,7 +217,7 @@ def isci_program_redni(redni):
     program ali ne.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.redni LIKE ?", [redni])
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.redni LIKE ? ORDER BY naziv ASC", [redni])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -219,7 +230,7 @@ def isci_program_izredni(izredni):
     program ali ne.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.izredni LIKE ?", [izredni])
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.izredni LIKE ? ORDER BY naziv ASC", [izredni])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -231,7 +242,7 @@ def isci_program_stopnja(stopnja):
     glede na podano stopnjo.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.stopnja LIKE ?", ['%' + stopnja + '%'])
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.stopnja LIKE ? ORDER BY naziv ASC", ['%' + stopnja + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -240,10 +251,22 @@ def isci_program_fakulteta(naziv):
     '''
     V bazi poišče program
     in njegove podatke
-    glede na podano stopnjo.
+    glede na podan naziv fakultete.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.naziv LIKE ?", ['%' + naziv + '%'])
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.naziv LIKE ? ORDER BY naziv ASC", ['%' + naziv + '%'])
+    vrni = kurzor.fetchall()
+    kurzor.close()
+    return vrni
+
+def isci_program_univerza(naziv):
+    '''
+    V bazi poišče program
+    in njegove podatke
+    glede na podan naziv univerze.
+    '''
+    kurzor = povezava.cursor()
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE univerza.naziv LIKE ? ORDER BY naziv ASC", ['%' + naziv + '%'])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni

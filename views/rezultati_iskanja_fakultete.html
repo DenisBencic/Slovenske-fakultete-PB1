@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+<title> Slovenske fakultete </title>
+</head>
+<body>
+<p> <b> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </b>
+<ol type = "I">
+    % for fakulteta in fakultete:
+    <li> 
+        <b> {{fakulteta[1]}} </b>
+		<ul>
+			% if fakulteta[2]:
+			<li> <b> Dekan:</b> {{fakulteta[2]}} </li>
+			% end
+			% if fakulteta[3]:
+			<li> <b> Lokacija:</b> <a href="https://www.google.si/maps/place/{{fakulteta[3]}}">{{fakulteta[3]}}</a> </li>
+			% end
+			% if fakulteta[4]:
+			<li> <b> Kontakt:</b> {{fakulteta[4]}} </li>
+			% end
+			% if fakulteta[5]:
+			<li> <b> E-naslov:</b> <a href="mailto:{{fakulteta[5]}}">{{fakulteta[5]}}</a> </li>
+			% end
+			% if fakulteta[6]:
+			<li> <b> Spletna stran:</b> <a href="{{fakulteta[6]}}">{{fakulteta[6]}}</a> </li>
+			% end
+			% if fakulteta[7]:
+			<li> <b> Leto ustanovitve:</b> {{fakulteta[7]}} </li>
+			% end
+			<br> </br>
+			% if fakulteta[10]:
+			<li> <b> Univerza:</b> {{fakulteta[10] if fakulteta[10] else ''}} </li>
+			% end
+			% if fakulteta[11]:
+			<li> <b> Tip:</b> {{fakulteta[11]}} </li>
+			% end
+			% if fakulteta[12]:
+			<li> <b> Rektor:</b> {{fakulteta[12]}} </li>
+			% end
+			% if fakulteta[13]:
+			<li> <b> Lokacija:</b> <a href="https://www.google.si/maps/place/{{fakulteta[13]}}">{{fakulteta[13]}}</a> </li>
+			% end
+			% if fakulteta[14]:
+			<li> <b> Kontakt:</b> {{fakulteta[14]}} </li>
+			% end
+			% if fakulteta[15]:
+			<li> <b> E-naslov:</b> <a href="mailto:{{fakulteta[15]}}">{{fakulteta[15]}}</a> </li>
+			% end
+			% if fakulteta[16]:
+			<li> <b> Spletna stran:</b> <a href="{{fakulteta[16]}}">{{fakulteta[16]}}</a> </li>
+			% end
+			% if fakulteta[17]:
+			<li> <b> Leto ustanovitve:</b> {{fakulteta[17]}} </li>
+			% end
+			<br> </br>
+		</ul>
+    </li>
+    % end
+</ol>
+</p>
+</body>
+<a href = '../'> Nazaj </a>
+</html>
