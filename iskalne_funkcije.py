@@ -81,7 +81,7 @@ def isci_univerza_spletna_stran(spletna_stran):
     '''
     kurzor = povezava.cursor()
     kurzor.execute("SELECT * FROM univerza WHERE spletna_stran LIKE ? ORDER BY naziv ASC", ['%' + spletna_stran + '%'])
-    vrni = none_v_prazen_niz(kurzor.fetchall())
+    vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
 
@@ -167,7 +167,7 @@ def isci_fakulteta_spletna_stran(spletna_stran):
     '''
     kurzor = povezava.cursor()
     kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.spletna_stran LIKE ? ORDER BY naziv ASC", ['%' + spletna_stran + '%'])
-    vrni = none_v_prazen_niz(kurzor.fetchall())
+    vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
 
