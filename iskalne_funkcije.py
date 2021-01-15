@@ -178,7 +178,7 @@ def isci_fakulteta_leto_ustanovitve(leto_ustanovitve):
     glede na podano spletno stran.
     '''
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE leto_ustanovitve LIKE ? ORDER BY naziv ASC", [leto_ustanovitve])
+    kurzor.execute("SELECT * from fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE fakulteta.leto_ustanovitve LIKE ? ORDER BY naziv ASC", [leto_ustanovitve])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -216,8 +216,12 @@ def isci_program_redni(redni):
     glede, ali gre za redni
     program ali ne.
     '''
+    if redni in {'da', 'DA', 'dA', 'Da'}:
+        logicna = 1
+    if redni in {'ne', 'NE', 'nE', 'Ne'}:
+        logicna = 0
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.redni LIKE ? ORDER BY naziv ASC", [redni])
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.redni LIKE ? ORDER BY naziv ASC", [logicna])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni
@@ -229,8 +233,12 @@ def isci_program_izredni(izredni):
     glede na to, ali gre za redni
     program ali ne.
     '''
+    if izredni in {'da', 'DA', 'dA', 'Da'}:
+        logicna = 1
+    elif izredni in {'ne', 'NE', 'nE', 'Ne'}:
+        logicna = 0
     kurzor = povezava.cursor()
-    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.izredni LIKE ? ORDER BY naziv ASC", [izredni])
+    kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.izredni LIKE ? ORDER BY naziv ASC", [logicna])
     vrni = kurzor.fetchall()
     kurzor.close()
     return vrni

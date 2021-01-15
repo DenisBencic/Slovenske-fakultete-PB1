@@ -1,20 +1,52 @@
 <!DOCTYPE html>
-<head>
-<title> Slovenske fakultete </title>
-</head>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+h1 {font-family: "Raleway", sans-serif; font-size:large;text-align: center;}
+h2 {font-family: "Raleway", sans-serif; font-size:x-large;text-align: center;}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('https://m.wsj.net/video/20170914/09142017_mw_studentdebthistory/09142017_mw_studentdebthistory_512x288.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
 <body>
-<p> <b> Vnesite eno od naslednjih stopenj programa po kateri želite iskati. </b> </p>
-		<ul>
-			<li> Stopnja <b> B1-VSŠ </b> zaznamuje visokošolski študijski program </li>
-			<li> Stopnja <b> B1-UNI </b> zaznamuje univerzitetni študijski program </li>
-			<li> Stopnja <b> B1-MAG </b> zaznamuje enoviti magistrski študijski program </li>
-			<li> Stopnja <b> B2-MAG </b> zaznamuje magistrski študijski program </li>
-			<li> Stopnja <b> B3-DR </b> zaznamuje doktorski študijski program </li>
-		</ul>
-<form action = "/programi/stopnja/rezultati/">
-	<input type="text" name="iskalni_niz">
-	<input type="submit" name="Išči!">
-</form>	
-<a href = '../'> Nazaj </a>
+	<div class="bgimg w3-display-container w3-text-white">
+		<div class="w3-display-middle w3-small">
+	<h2> <p> <b> Vnesite eno od naslednjih stopenj programa po kateri želite iskati. </b> </p></h2>
+		<h1><center>
+	    <table class="center" style="width:50%">
+			<tr>
+				<th> <small> Stopnja </small> B1-VSŠ <small> zaznamuje visokošolski študijski program </small></th>
+			</tr>
+			<tr>
+				<th><small> Stopnja </small>  B1-UNI <small> zaznamuje visokošolski študijski program </small> </th>
+			</tr>
+			<tr>
+				<th> <small> Stopnja </small> B1-MAG <small> zaznamuje enoviti magistrski študijski program </small></th>
+			</tr>
+			<tr>
+				<th><small> Stopnja </small><b> B2-MAG <small> zaznamuje enoviti magistrski študijski program </small></th>
+			</tr>
+			<tr>
+				<th><small> Stopnja </small> B3-DR <small> zaznamuje doktorski študijski program </small></th>
+			</tr>
+		</table>
+		</center>
+		<!-- prazna vrstica  -->
+		<form action = "/programi/stopnja/rezultati/">
+			<input type="text" name="iskalni_niz">
+			<input type="submit" name="Išči!">
+		</form>	
+	</h1>
+	</div>
+</div>
+
 </body>
 </html>

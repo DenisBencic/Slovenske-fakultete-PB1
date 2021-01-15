@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<head>
-<title> Slovenske fakultete </title>
-</head>
-<body>
-<p> <b> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </b>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+h1 {font-family: "Raleway", sans-serif; font-size:medium;text-align: center; color: white;}
+h2 {font-family: "Raleway", sans-serif; font-size:small;color: white;}
+}
+</style> 
+
+<body style="background-color:black;">
+	<h1>
+<p> <b> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </b></h1>
+	<h2>
 <ol type = "I">
     % for fakulteta in fakultete:
     <li> 
@@ -58,6 +69,6 @@
     % end
 </ol>
 </p>
+</h2>
 </body>
-<a href = '../'> Nazaj </a>
 </html>

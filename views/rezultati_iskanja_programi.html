@@ -1,72 +1,77 @@
 <!DOCTYPE html>
-<head>
-<title> Slovenske fakultete </title>
-</head>
-<body>
-<p> <b> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </b>
-<ol type = "I">
-    % for program in programi:
-    <li> 
-        <b> {{program[1]}} </b>
-		<ul>
-			% if program[4]:
-			<li> <b> Stopnja:</b> {{program[4] if program[4] else ''}} </li>
-			% end
-			<li> <b> Redni:</b> {{'da' if program[2]==1 else 'ne'}} </li>
-			<li> <b> Izredni:</b> {{'da' if program[3]==1 else 'ne'}} </li>
-			<br> </br>
-			% if program[7]:
-			<li> <b> Fakulteta:</b> {{program[7]}} </li>
-			% end
-			% if program[8]:
-			<li> <b> Dekan:</b> {{program[8]}} </li>
-			% end
-			% if program[9]:
-			<li> <b> Lokacija:</b> <a href="https://www.google.si/maps/place/{{program[9]}}">{{program[9]}}</a> </li>
-			% end
-			% if program[10]:
-			<li> <b> Kontakt:</b> {{program[10]}} </li>
-			% end
-			% if program[11]:
-			<li> <b> E-naslov:</b> <a href="mailto:{{program[11]}}">{{program[11]}}</a> </li>
-			% end
-			% if program[12]:
-			<li> <b> Spletna stran:</b> <a href="{{program[12]}}">{{program[12]}}</a> </li>
-			% end
-			% if program[13]:
-			<li> <b> Leto ustanovitve:</b> {{program[13]}} </li>
-			% end
-			<br> </br>
-			% if program[16]:
-			<li> <b> Univerza:</b> {{program[16]}} </li>
-			% end
-			% if program[17]:
-			<li> <b> Tip:</b> {{program[17]}} </li>
-			% end
-			% if program[18]:
-			<li> <b> Rektor:</b> {{program[18]}} </li>
-			% end
-			% if program[19]:
-			<li> <b> Lokacija:</b> <a href="https://www.google.si/maps/place/{{program[19]}}">{{program[19]}}</a> </li>
-			% end
-			% if program[20]:
-			<li> <b> Kontakt:</b> {{program[20]}} </li>
-			% end
-			% if program[21]:
-			<li> <b> E-naslov:</b> <a href="mailto:{{program[21]}}">{{program[21]}}</a> </li>
-			% end
-			% if program[22]:
-			<li> <b> Spletna stran:</b> <a href="{{program[22]}}">{{program[22]}}</a> </li>
-			% end
-			% if program[23]:
-			<li> <b> Leto ustanovitve:</b> {{program[23]}} </li>
-			% end
-			<br> </br>
-		</ul>
-    </li>
-    % end
-</ol>
-</p>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+h1 {font-family: "Raleway", sans-serif; font-size:medium;text-align: center; color: white;}
+h2 {font-family: "Raleway", sans-serif; font-size:small;color: white;}
+}
+</style>
+
+<body style="background-color:black;">
+<h1><p> <b> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </b></h1>
+	<h2>
+		% for program in programi:
+        	<b> {{program[1]}} </b>
+				<ul>
+				% if program[4]:
+				<li> <b> Stopnja:</b> {{program[4] if program[4] else ''}} </li>
+				% end
+				<li> <b> Redni:</b> {{'da' if program[2]==1 else 'ne'}} </li>
+				<li> <b> Izredni:</b> {{'da' if program[3]==1 else 'ne'}} </li>
+				<br> </br>
+				% if program[7]:
+				<li> <b> Fakulteta:</b> {{program[7]}} </li>
+				% end
+				% if program[8]:
+				<li> <b> Dekan:</b> {{program[8]}} </li>
+				% end
+				% if program[9]:
+				<li> <b> Lokacija:</b> <a href="https://www.google.si/maps/place/{{program[9]}}">{{program[9]}}</a> </li>
+				% end
+				% if program[10]:
+				<li> <b> Kontakt:</b> {{program[10]}} </li>
+				% end
+				% if program[11]:
+				<li> <b> E-naslov:</b> <a href="mailto:{{program[11]}}">{{program[11]}}</a> </li>
+				% end
+				% if program[12]:
+				<li> <b> Spletna stran:</b> <a href="{{program[12]}}">{{program[12]}}</a> </li>
+				% end
+				% if program[13]:
+				<li> <b> Leto ustanovitve:</b> {{program[13]}} </li>
+				% end
+				<br> </br>
+				% if program[16]:
+				<li> <b> Univerza:</b> {{program[16]}} </li>
+				% end
+				% if program[17]:
+				<li> <b> Tip:</b> {{program[17]}} </li>
+				% end
+				% if program[18]:
+				<li> <b> Rektor:</b> {{program[18]}} </li>
+				% end
+				% if program[19]:
+				<li> <b> Lokacija:</b> <a href="https://www.google.si/maps/place/{{program[19]}}">{{program[19]}}</a> </li>
+				% end
+				% if program[20]:
+				<li> <b> Kontakt:</b> {{program[20]}} </li>
+				% end
+				% if program[21]:
+				<li> <b> E-naslov:</b> <a href="mailto:{{program[21]}}">{{program[21]}}</a> </li>
+				% end
+				% if program[22]:
+				<li> <b> Spletna stran:</b> <a href="{{program[22]}}">{{program[22]}}</a> </li>
+				% end
+				% if program[23]:
+				<li> <b> Leto ustanovitve:</b> {{program[23]}} </li>
+				% end
+				<br> </br>
+			</ul>
+    	% end
+	</p></h2>
 </body>
-<a href = '../'> Nazaj </a>
 </html>

@@ -1,18 +1,94 @@
 <!DOCTYPE html>
-<head>
-<title> Slovenske fakultete </title>
-</head>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h5 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url(' https://www.refugeecouncil.org.au/wp-content/uploads/2018/02/University_library-750x500.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
 <body>
-<p><b>Pozdravljeni v bazi slovenskih univerz, fakultet in programov.
-<br>V bazi je trenutno {} univerz, {} fakultete in {} programov.
-</b>
-<br>
-<br> Kaj želite iskati?
-<ol>
-    <li> <a href = '../univerze/'> Univerze </a> </li>
-    <li> <a href = '../fakultete/'> Fakultete </a> </li>
-    <li> <a href = '../programi/'> Programi </a> </li>
-<ol>
-</p>
+
+<div class="bgimg w3-display-container w3-text-white">
+  <div class="w3-display-middle w3-jumbo">
+    <p><strong><b>Slovenske fakultete</p></b></strong>
+  </div>
+  <div class="w3-display-topleft w3-container w3-xlarge">
+    <p><button onclick="document.getElementById('univerze').style.display='block'" class="w3-button w3-black">univerze</button></p>
+    <p><button onclick="document.getElementById('fakultete').style.display='block'" class="w3-button w3-black">fakultete</button></p>
+    <p><button onclick="document.getElementById('programi').style.display='block'" class="w3-button w3-black">programi</button></p>
+  </div>
+
+</div>
+
+
+<!-- Univerze -->
+<div id="univerze" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black w3-display-container">
+      <span onclick="document.getElementById('univerze').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Dostopaš lahko direktno do spodnjih podatkov</h1>
+      <tr>
+            <p><th><a href = '../univerze/naziv/'> Naziv </a></th></p>
+           <p><th><a href = '../univerze/tip/'> Tip </a> </th></p>
+            <p><th><a href = '../univerze/rektor/'> Rektor </a> </th></p>
+            <p><th><a href = '../univerze/lokacija/'> Lokacija </a></th></p>
+            <p><th><a href = '../univerze/kontakt/'> Kontakt </a></th></p>
+            <p><th><a href = '../univerze/e_naslov/'> E-naslov </a> </th></p>		
+            <p><th><a href = '../univerze/spletna_stran/'> Spletna stran </a></th></p> 
+            <p><th><a href = '../univerze/leto_ustanovitve/'> Leto ustanovitve </a></th></p>
+    </tr>
+    </div>
+
+  </div>
+</div>
+
+<!-- FAKULTETE -->
+<div id="fakultete" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black">
+      <span onclick="document.getElementById('fakultete').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Dostopaš lahko direktno do spodnjih podatkov</h1>
+      <tr>
+            <p><th> <a href = '../fakultete/naziv/'> Naziv </a> </th></p>
+            <p><th> <a href = '../fakultete/dekan/'> Dekan </a> </th></p>
+            <p><th> <a href = '../fakultete/lokacija/'> Lokacija </a> </th></p>
+            <p><th> <a href = '../fakultete/kontakt/'> Kontakt </a> </th></p>
+            <p><th> <a href = '../fakultete/e_naslov/'> E-naslov </a> </th></p>
+            <p><th> <a href = '../fakultete/spletna_stran/'> Spletna stran </a> </th></p>
+            <p><th> <a href = '../fakultete/leto_ustanovitve/'> Leto ustanovitve </a> </th></p>
+            <p><th> <a href = '../fakultete/univerza/'> Univerza </a> </th></p>
+        </tr>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMI-->
+<div id="programi" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+      <div class="w3-container w3-black">
+        <span onclick="document.getElementById('programi').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+        <h1>Dostopaš lahko direktno do spodnjih podatkov.</h1>
+        <tr>
+            <p><th> <a href = '../programi/naziv/'> Naziv </a> </th></p>
+            <p><th> <a href = '../programi/redni/'> Redni </a> </th></p>
+            <p><th> <a href = '../programi/izredni/'> Izredni </a> </th></p>
+            <p><th> <a href = '../programi/stopnja/'> Stopnja </a> </th></p>
+            <p><th> <a href = '../programi/fakulteta/'> Fakulteta </a> </th></p>
+            <p><th> <a href = '../programi/univerza/'> Univerza </a> </th></p>
+        </tr>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
+
