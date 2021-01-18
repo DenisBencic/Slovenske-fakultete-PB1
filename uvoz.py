@@ -35,17 +35,8 @@ def uvozi():
                 # Odstranimo '\n' v prebranih ukazih, 
                 kurzor.execute(vrstica[:-1])
 
-    # Določanje uvodnih parametrov - število entitet
-    kurzor.execute('SELECT COUNT(*) FROM univerza')
-    st_univerz = kurzor.fetchone()[0]
-    kurzor.execute('SELECT COUNT(*) FROM fakulteta')
-    st_fakultet = kurzor.fetchone()[0]
-    kurzor.execute('SELECT COUNT(*) FROM program')
-    st_programov = kurzor.fetchone()[0]
-
     # Prekinitev povezave z SQL
     povezava.commit()
     kurzor.close()
     povezava.close()
 
-    return (st_univerz, st_fakultet, st_programov)

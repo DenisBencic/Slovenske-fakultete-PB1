@@ -2,7 +2,7 @@ from bottle import route, run, template, request
 from uvoz import uvozi
 from iskalne_funkcije import *
 
-param = uvozi()
+uvozi()
 
 @route('/')
 def pozdrav():
