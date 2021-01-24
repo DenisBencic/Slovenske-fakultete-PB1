@@ -14,23 +14,23 @@ def uvozi():
     if kurzor.fetchone() == (0, ):
 
         # Branje iz datotek
-        with open('tabele.txt', 'r', encoding = 'utf-8') as datoteka:
+        with open('data/tabele.sql', 'r', encoding = 'utf-8') as datoteka:
             for vrstica in datoteka:
                 # Odstranimo '\n' v prebranih ukazih, 
                 kurzor.execute(vrstica[:-1])
 
-        with open('univerza.txt', 'r', encoding = 'utf-8') as datoteka:
+        with open('data/univerza.sql', 'r', encoding = 'utf-8') as datoteka:
             for vrstica in datoteka:
                 # Odstranimo '\n' v prebranih ukazih, 
                 kurzor.execute(vrstica[:-1])
 
-        with open('fakulteta.txt', 'r', encoding = 'utf-8') as datoteka:
+        with open('data/fakulteta.sql', 'r', encoding = 'utf-8') as datoteka:
             for vrstica in datoteka:
                 # Odstranimo '\n' v prebranih ukazih, 
                 kurzor.execute(vrstica[:-1])
 
 
-        with open('program.txt', 'r', encoding = 'utf-8') as datoteka:
+        with open('data/program.sql', 'r', encoding = 'utf-8') as datoteka:
             for vrstica in datoteka:
                 # Odstranimo '\n' v prebranih ukazih, 
                 kurzor.execute(vrstica[:-1])
