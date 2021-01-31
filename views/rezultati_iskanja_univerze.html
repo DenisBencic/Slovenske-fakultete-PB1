@@ -1,3 +1,4 @@
+%rebase('template.html')
 <!DOCTYPE html>
 <html>
 <title>Slovenske fakultete</title>
@@ -6,41 +7,46 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-h1 {font-family: "Raleway", sans-serif; font-size:small; color:white;}
-h2 {font-family: "Raleway", sans-serif; font-size:medium; text-align: center; color:white;}
+h2 {font-family: "Raleway", sans-serif; font-size:small; color:white;}
+h1 {font-family: "Raleway", sans-serif; font-size:medium; text-align: center; color:white;}
 }
 </style>
 <body style="background-color:black;">
-		<p> <b><h2> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </b></h2>
-		<h1>
-    				% for univerza in univerze:
-        			<b> {{univerza[1]}} </b>
-					% if univerza[2]:
-					<li> <b> Tip:</b> {{univerza[2]}} </li>
-					% end
-					% if univerza[3]:
-					<li> <b> Rektor:</b> {{univerza[3]}} </li>
-					% end
-					% if univerza[4]:
-					<li> <b> Lokacija:</b> <a href="https://www.google.si/maps/place/{{univerza[4]}}">{{univerza[4]}}</a> </li>
-					% end
-					% if univerza[5]:
-					<li> <b> Kontakt:</b> {{univerza[5]}} </li>
-					% end
-					% if univerza[6]:
-					<li> <b> E-naslov:</b> <a href="mailto:{{univerza[6]}}">{{univerza[6]}}</a> </li>
-					% end
-					% if univerza[7]:
-					<li> <b> Spletna stran:</b> <a href="{{univerza[7]}}">{{univerza[7]}}</a> </li>
-					% end
-					% if univerza[8]:
-					<li> <b> Leto ustanovitve:</b> {{univerza[8]}} </li>
-					% end
-					<br> </br>
-   					 % end
-		</h1></p>
-
-	
+<h1>
+ <b> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </h1>
+<h2>
+<ol = type = "I">
+	% for univerza in univerze:
+	<li>
+		<b> {{univerza[1]}} </b>
+			<ul>
+				% if univerza[2]:
+				<li> <b> Tip:</b> {{univerza[2]}} </li>
+				% end
+				% if univerza[3]:
+				<li> <b> Rektor:</b> {{univerza[3]}} </li>
+				% end
+				% if univerza[4]:
+				<li> <b> Lokacija:</b> <a href="https://www.google.si/maps/place/{{univerza[4]}}">{{univerza[4]}}</a> </li>
+				% end
+				% if univerza[5]:
+				<li> <b> Kontakt:</b> {{univerza[5]}} </li>
+				% end
+				% if univerza[6]:
+				<li> <b> E-naslov:</b> <a href="mailto:{{univerza[6]}}">{{univerza[6]}}</a> </li>
+				% end
+				% if univerza[7]:
+				<li> <b> Spletna stran:</b> <a href="{{univerza[7]}}">{{univerza[7]}}</a> </li>
+				% end
+				% if univerza[8]:
+				<li> <b> Leto ustanovitve:</b> {{univerza[8]}} </li>
+				% end
+				<br> </br>
+			</ul>
+		</li>
+	% end
+</ol>
+</p>
+</h2>
 </body>
-
 </html>

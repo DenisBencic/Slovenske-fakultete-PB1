@@ -1,3 +1,4 @@
+%rebase('template.html')
 <!DOCTYPE html>
 <html>
 <title>Slovenske fakultete</title>
@@ -9,12 +10,11 @@
 h1 {font-family: "Raleway", sans-serif; font-size:medium;text-align: center; color: white;}
 h2 {font-family: "Raleway", sans-serif; font-size:small;color: white;}
 }
-</style> 
+</style>
 
 <body style="background-color:black;">
-	<h1>
-<p> <b> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </b></h1>
-	<h2>
+<h1><p> <b> Zadetki izbranega iskanja za "</b>{{iskalni_niz}}</b>": </b></h1>
+<h2>
 <ol type = "I">
     % for fakulteta in fakultete:
     <li> 
@@ -70,5 +70,6 @@ h2 {font-family: "Raleway", sans-serif; font-size:small;color: white;}
 </ol>
 </p>
 </h2>
+</h3>
 </body>
 </html>
