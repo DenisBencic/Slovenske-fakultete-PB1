@@ -1,4 +1,6 @@
 import sqlite3 as dbapi
+import random
+
 povezava = dbapi.connect('SlovenskeFakultete.sqlite')
 
 def isci_univerza_naziv(naziv):
@@ -220,6 +222,8 @@ def isci_program_redni(redni):
         logicna = 1
     if redni in {'ne', 'NE', 'nE', 'Ne'}:
         logicna = 0
+    else:
+        logicna = random.randrange(0, 2)  
     kurzor = povezava.cursor()
     kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.redni LIKE ? ORDER BY naziv ASC", [logicna])
     vrni = kurzor.fetchall()
@@ -237,6 +241,8 @@ def isci_program_izredni(izredni):
         logicna = 1
     elif izredni in {'ne', 'NE', 'nE', 'Ne'}:
         logicna = 0
+    else:
+        logicna = random.randrange(0, 2)        
     kurzor = povezava.cursor()
     kurzor.execute("SELECT * FROM program JOIN fakulteta ON fakulteta.id = program.fakulteta JOIN univerza ON univerza.id = fakulteta.univerza WHERE program.izredni LIKE ? ORDER BY naziv ASC", [logicna])
     vrni = kurzor.fetchall()
